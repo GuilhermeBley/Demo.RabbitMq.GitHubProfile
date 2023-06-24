@@ -1,4 +1,5 @@
 using Demo.RabbitMq.GitHubProfile.Api;
+using Demo.RabbitMq.GitHubProfile.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IGithubApi, GithubApi>();
+builder.Services.AddScoped<IGitRepoRepository, GitRepoRepository>();
 
 var app = builder.Build();
 

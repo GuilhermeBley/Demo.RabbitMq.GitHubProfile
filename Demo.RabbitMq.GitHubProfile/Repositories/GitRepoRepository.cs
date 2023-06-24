@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 
 namespace Demo.RabbitMq.GitHubProfile.Repositories;
 
-internal interface IGitRepoRepository
+public interface IGitRepoRepository
 {
     Task AddAsync(string name, GitRepositoryModel[] gitRepositoryModels, CancellationToken cancellationToken = default);
     Task RemoveByNameAsync(string name, CancellationToken cancellationToken = default);
