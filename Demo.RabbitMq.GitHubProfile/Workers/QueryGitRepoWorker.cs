@@ -7,9 +7,9 @@ public class QueryGitRepoWorker : BackgroundService
     private IGitRepoRequestsRepository _gitRepoRequestsRepository;
     private readonly ILogger<QueryGitRepoWorker> _log;
 
-    public QueryGitRepoWorker(ILogger<QueryGitRepoWorker> log, IGitRepoRequestsRepository gitRepoRequestsRepository)
+    public QueryGitRepoWorker(ILogger<QueryGitRepoWorker> log)
     {
-        _gitRepoRequestsRepository = gitRepoRequestsRepository;
+        _gitRepoRequestsRepository = new GitRepoRequestsRepository();
         _log = log;
     }
 
