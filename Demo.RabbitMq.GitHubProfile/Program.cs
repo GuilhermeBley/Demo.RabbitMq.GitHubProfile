@@ -1,5 +1,6 @@
 using Demo.RabbitMq.GitHubProfile.Api;
 using Demo.RabbitMq.GitHubProfile.Repositories;
+using Demo.RabbitMq.GitHubProfile.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddHostedService<QueryGitRepoWorker>();
 
 builder.Services.AddHttpClient("git", (client) =>
 {
