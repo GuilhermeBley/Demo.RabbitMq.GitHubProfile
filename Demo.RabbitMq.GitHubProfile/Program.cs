@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IGithubApi, GithubApi>();
 builder.Services.AddScoped<IGitRepoRepository, GitRepoRepository>();
+builder.Services.AddScoped<IGitRepoRequestsRepository, GitRepoRequestsRepository>();
 
 var app = builder.Build();
 
