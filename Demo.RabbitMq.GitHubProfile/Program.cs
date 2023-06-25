@@ -10,7 +10,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IGithubApi, GithubApi>();
+builder.Services.AddHttpClient("git", (client) =>
+{
+    client.BaseAddress = new Uri("https://api.github.com");
+});
+
+builder.Services.AddSingleton<IGithubApi, GithubApi>(
+    (provider) => new GithubApi(provider.GetRequiredService<IHttpClientFactory>().CreateClient("git")));
 builder.Services.AddScoped<IGitRepoRepository, GitRepoRepository>();
 builder.Services.AddScoped<IGitRepoRequestsRepository, GitRepoRequestsRepository>();
 
