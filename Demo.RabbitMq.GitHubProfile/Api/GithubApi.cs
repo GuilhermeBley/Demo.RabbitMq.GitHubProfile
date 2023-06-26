@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.RabbitMq.GitHubProfile.Api;
 
-public interface IGithubApi
+public interface IGitApi
 {
     Task<IEnumerable<GitRepositoryModel>> GetAllRepositoriesAsync(string name, CancellationToken cancellationToken = default);
 }
 
-internal class GithubApi : IGithubApi
+internal class GithubApi : IGitApi
 {
     private readonly HttpClient _client;
 
